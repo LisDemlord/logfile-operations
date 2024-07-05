@@ -1,0 +1,11 @@
+[Unit]
+Description=Netcat Listening Service on Port 9101
+After=network.target
+
+[Service]
+ExecStartPre=!!/opt/scripts/driver-create-start-log.sh driver9101
+ExecStart=/usr/bin/nc -l -p 9101
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
